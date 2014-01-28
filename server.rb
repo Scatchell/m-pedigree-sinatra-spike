@@ -3,14 +3,22 @@ require 'mongoid'
 require 'mongo'
 
 require_relative 'company'
- 
+
 Mongoid.load!("mongoid.yml")
 
+def load_all_companies_from_json
+    JSON.parse(File.read('/Users/ThoughtWorks/sideProjects/Ruby/sinatra-mongo-spike/all_companies.json')).inject([]) do |companies, company|
+        companies.push Company.new(company_code: company['company_code'], company_name: company['company_name'])
+    end
+end
+
 get '/' do
-  company = Company.new(:company_code => "123456", :company_name => "Example Company")
-  company.save
- 
-  "#{company.company_name} saved with code: #{company.company_code}"
+    load_all_companies_from_json.each do |company|
+        company.save
+        puts "#{company.company_name} saved with code: #{company.company_code}"
+    end
+
+    'done, check console'
 end
 
 get '/companies' do
