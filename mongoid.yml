@@ -1,0 +1,14 @@
+development:
+  sessions:
+    default:
+      database: goldkeys
+      hosts:
+        - localhost:27017
+production:
+  sessions:
+    default:
+      host: <%= ENV['MONGOID_HOST'] %>
+      port: <%= ENV['MONGOID_PORT'] %>
+      username: <%= ENV['MONGOID_USERNAME'] %>
+      password: <%= ENV['MONGOID_PASSWORD'] %>
+      database: <%= ENV['MONGOID_DATABASE'] %>
