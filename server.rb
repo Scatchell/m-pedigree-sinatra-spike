@@ -2,7 +2,7 @@ require 'sinatra'
 require 'mongoid'
 require 'mongo'
 
-require_relative 'company'
+require_relative 'src/company'
 
 Mongoid.load!("mongoid.yml")
 
@@ -12,7 +12,7 @@ def load_all_companies_from_json
     end
 end
 
-get '/' do
+get '/load_all_from_json' do
     load_all_companies_from_json.each do |company|
         company.save
         puts "#{company.company_name} saved with code: #{company.company_code}"
@@ -46,4 +46,3 @@ post '/company' do
 
     "Company with name: #{company.company_name} and code: #{company.company_code} saved!"
 end
-
