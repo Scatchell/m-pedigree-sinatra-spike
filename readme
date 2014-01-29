@@ -1,0 +1,13 @@
+Simple Instructions to run:
+
+1. Install MongoDB
+
+2. Run Mongo server with command: mongod
+
+3. Navigate to project folder
+
+4. Select ruby 2.0.0 with your own gemset if using rvm or similar
+
+5. Install your bundle with the command: bundle install
+
+6. When this finished resolving and download, just run the server: ruby server.rb
